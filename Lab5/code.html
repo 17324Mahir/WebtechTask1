@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Analyzer</title>
+    <style>
+        body
+         {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+        textarea {
+            width: 300px;
+            height: 150px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Text Analyzer</h2>
+
+<textarea id="textInput" placeholder="Text"></textarea>
+<br><br>
+
+<button onclick="analyzeText()">Analyze Text</button>
+
+<div id="result"></div>
+
+<script>
+
+function analyzeText() {
+    let text = document.getElementById("textInput").value;
+
+    if (text.trim() === "") {
+        document.getElementById("result").innerHTML = "Please enter some text!";
+        return;
+    }
+
+    let charCount = text.length;
+
+    let words = text.trim().split(/\s+/);
+    let wordCount = words.length;
+
+    let reversed = "";
+    for (let i = text.length - 1; i >= 0; i--) {
+        reversed += text[i];
+    }
+
+    document.getElementById("result").innerHTML =
+        "<p><b>Characters:</b> " + charCount + "</p>" +
+        "<p><b>Words:</b> " + wordCount + "</p>" +
+        "<p><b>Reversed Text:</b><br>" + reversed + "</p>";
+}
+
+</script>
+
+</body>
+</html>
